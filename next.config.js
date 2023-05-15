@@ -7,17 +7,14 @@ let assetPrefix = '';
 if (isGithubActions) {
   const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '');
 
-  console.log(repo);
-
   basePath = `/${repo}`;
   assetPrefix = `/${repo}/`;
 }
 
-console.log(basePath)
-
 const nextConfig = {
   basePath: basePath,
-  assetPrefix: assetPrefix
+  assetPrefix: assetPrefix,
+  output: 'export'
 }
 
 module.exports = nextConfig
