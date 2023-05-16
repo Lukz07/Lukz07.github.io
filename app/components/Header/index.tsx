@@ -18,7 +18,6 @@ const Header = () => (
             </span>
           </a>
         </li>
-
         <li className="header-menu-item">
           <a href="#work" className="desc uppercase">
             <span className="header-menu-item-inner">
@@ -27,7 +26,6 @@ const Header = () => (
             </span>
           </a>
         </li>
-
         <li className="header-menu-item">
           <a href="#contact" className="desc uppercase">
             <span className="header-menu-item-inner">
