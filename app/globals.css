@@ -2,26 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --primary: #0d0d0d;
+  --secondary: #b7ab98;
+  --secondary-light: hsla(37, 18%, 66%, 0.5);
+  --third: #eb5939;
+  --screen-x: 1.25rem;
 }
 
-@media (prefers-color-scheme: dark) {
+body, html {
+  background-clip: border-box;
+  background: var(--primary);
+}
+
+@media(min-width: 768px) and (max-width: 1199px) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --screen-x: 2.66666vw;
+    --spacing-upper: 16.5625rem;
+  }
+}
+
+@media (prefers-color-scheme: no-preference) {
+  :root {
+
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--secondary);
+  background-color: var(--primary);
 }
