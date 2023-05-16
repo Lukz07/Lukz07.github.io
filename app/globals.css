@@ -13,8 +13,8 @@
 }
 
 body, html {
-  background-clip: border-box;
   background: var(--primary);
+  color: var(--secondary);
 }
 
 @media(min-width: 768px) and (max-width: 1199px) {
@@ -24,13 +24,19 @@ body, html {
   }
 }
 
-@media (prefers-color-scheme: no-preference) {
+@media (min-width: 1200px) {
   :root {
-
+    --screen-x: 4.0509vw;
+  }
+  body,html {
+    font-size: .9259vw;
   }
 }
 
-body {
-  color: var(--secondary);
-  background-color: var(--primary);
-}
+/*@media (prefers-color-scheme: no-preference) {*/
+/*  :root {*/
+
+/*  }*/
+/*}*/
+
+
