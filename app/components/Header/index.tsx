@@ -1,15 +1,17 @@
 "use client"
 import Image from "next/image";
 import "./index.scss";
+import React from "react";
 
 const Header = () => {
-  const onClick = (e) => {
-    const clickedLinkNode = e.target.parentNode.parentNode.parentNode;
+  const onClick = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement;
+    const clickedLinkNode = target.parentNode?.parentNode?.parentNode as HTMLElement;
     if (!clickedLinkNode.className.includes('is-active')) {
       //sacar is-active del link que lo tiene
       const selectedMenuLink = document.querySelector('.header-menu-item.is-active');
-      const linkClass = selectedMenuLink.className.split(" ").filter(value => value !== 'is-active').join(" ");
-      selectedMenuLink.className = linkClass;
+      const linkClass = selectedMenuLink?.className.split(" ").filter(value => value !== 'is-active').join(" ");
+      if (selectedMenuLink && linkClass) selectedMenuLink.className = linkClass;
       //poner is-active al nuevo link
       clickedLinkNode.className = clickedLinkNode.className + ' is-active';
     }
