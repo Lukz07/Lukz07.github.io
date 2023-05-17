@@ -1,0 +1,10 @@
+.layer {
+  width: 100%;
+
+  &-container {
+    overflow: hidden;
+    padding-left: 0;
+    padding-right: 0;
+    //width: 100%;
+  }
+}

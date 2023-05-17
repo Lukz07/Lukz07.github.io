@@ -1,0 +1,205 @@
+.about {
+  width: 100%;
+
+  .hero {
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
+
+    .hero-bg {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      display: block;
+      transform: translate3d(0, 0,0) rotate(0);
+      will-change: transform;
+
+      .banner-container {
+        height: 100%;
+        display: block;
+
+        .banner {
+          height: 100%;
+          object-fit: none;
+          width: calc(100% + 1px);
+          opacity: .67;
+        }
+      }
+
+      .bottom-gradient {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 50%;
+        width: 100%;
+        background: rgb(13,13,13);
+        background: linear-gradient(0deg, rgba(13,13,13,1) 63%, rgba(13,13,13,0) 100%);
+      }
+
+      .top-gradient {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 50%;
+        width: 100%;
+        background: rgb(13,13,13);
+        background: linear-gradient(180deg, rgba(13,13,13,1) 60%, rgba(13,13,13,0) 100%);
+      }
+    }
+
+    .hero-content {
+      -webkit-box-pack: center;
+      -webkit-box-align: center;
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      height: calc(var(--vh)*100);
+      z-index: 2;
+      justify-content: center;
+      min-height: 32.5rem;
+
+
+      &-inner {
+        &-subtitle {
+          margin-bottom: 0.9375rem;
+          span {
+            font-weight: 700;
+            font-style: normal;
+          }
+        }
+
+        .anim-chars-3d {
+          perspective: 300px;
+        }
+
+        .line {
+          display: block;
+          text-align: center;
+          width: 100%;
+
+          strong {
+            color: var(--third);
+            font-weight: 700;
+          }
+
+          @keyframes anim-lineUp {
+            0% {
+              opacity: 0;
+              transform: translateY(80%);
+            }
+            20% {
+              opacity: 0;
+            }
+            50% {
+              opacity: 1;
+              transform: translateY(0%);
+            }
+            100% {
+              opacity: 1;
+              transform: translateY(0%);
+            }
+          }
+
+          @keyframes glitch{
+            2%,64%{
+              transform: translate(2px,0) skew(0deg);
+            }
+            4%,60%{
+              transform: translate(-2px,0) skew(0deg);
+            }
+            62%{
+              transform: translate(0,0) skew(5deg);
+            }
+          }
+
+          .char {
+            will-change: transform;
+            display: inline-block;
+            animation: 2s anim-lineUp;
+
+          .with-glitch {
+            animation-delay: 4s;
+            animation: glitch 1s linear infinite;
+          }
+        }
+
+          div:before,
+          div:after{
+            content: attr(title);
+            position: absolute;
+            left: 0;
+          }
+
+          div:before{
+            animation: glitchTop 1s linear infinite;
+            clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+            -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+          }
+
+          @keyframes glitchTop{
+            2%,64%{
+              transform: translate(2px,-2px);
+            }
+            4%,60%{
+              transform: translate(-2px,2px);
+            }
+            62%{
+              transform: translate(13px,-1px) skew(-13deg);
+            }
+          }
+
+          div:after{
+            animation: glitchBotom 1.5s linear infinite;
+            clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+            -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+          }
+
+          @keyframes glitchBotom{
+            2%,64%{
+              transform: translate(-2px,0);
+            }
+            4%,60%{
+              transform: translate(-2px,0);
+            }
+            62%{
+              transform: translate(-22px,5px) skew(21deg);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .h1, h1 {
+    font-size: 8.75rem;
+  }
+  .h6, h6 {
+    font-size: 1rem;
+  }
+  .about {
+    .hero {
+      .hero-bg {
+        .banner-container {
+          .banner {
+            width: 100%;
+          }
+        }
+      }
+
+      .hero-content {
+        padding-bottom: 18.65vh;
+        padding-top: 15.77vh;
+        &-inner {
+          &-subtitle {
+            margin-bottom: 1.875rem;
+          }
+        }
+      }
+    }
+  }
+}

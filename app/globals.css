@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
 :root {
   --primary: #0d0d0d;
@@ -10,11 +11,27 @@
   --secondary-light: hsla(37, 18%, 66%, 0.5);
   --third: #eb5939;
   --screen-x: 1.25rem;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 700;
 }
 
 body, html {
   background: var(--primary);
   color: var(--secondary);
+}
+
+.h1, h1 {
+  font-size: 5rem;
+  letter-spacing: -.05em;
+  line-height: 84%;
+  text-transform: uppercase;
+}
+
+.h6, h6 {
+  font-size: .875rem;
+  line-height: 130%;
+  letter-spacing: .5rem;
 }
 
 @media(min-width: 768px) and (max-width: 1199px) {
