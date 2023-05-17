@@ -23,6 +23,10 @@
       line-height: 1;
       padding: 0.625rem;
     }
+
+    .cursor-hover-item:hover ~ .cursor {
+      transform: translate(-50%, 50%) scale(8);
+    }
   }
 }
 

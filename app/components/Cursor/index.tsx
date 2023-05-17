@@ -8,16 +8,16 @@ const Cursor = () => {
     const cursorOuter = document.querySelector(".cursor--large");
     const cursorInner = document.querySelector(".cursor--small");
     const cursorTextContainerEl = document.querySelector(".cursor--text");
-    const cursorTextEl = cursorTextContainerEl.querySelector(".text");
+    const cursorTextEl = cursorTextContainerEl?.querySelector(".text");
 
     const hoverItems = document.querySelectorAll(".cursor-hover-item");
     const hoverEffectDuration = 0.3;
     let isHovered = false;
-    let initialCursorHeight;
+    let initialCursorHeight: number;
 
     const cursorRotationDuration = 8;
 
-    const handlePointerEnter = (e) => {
+    const handlePointerEnter = (e: Event) => {
       isHovered = true;
 
       const target = e.currentTarget;
@@ -82,7 +82,7 @@ const Cursor = () => {
       y: -100
     };
 
-    const updateCursorPosition = (e) => {
+    const updateCursorPosition = (e: PointerEvent) => {
       mouse.x = e.pageX;
       mouse.y = e.pageY;
     }
