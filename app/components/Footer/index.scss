@@ -1,0 +1,36 @@
+.footer {
+  --bottom: 2rem;
+  --color: #eb5939;
+  --color-primary: #b7ab98;
+  bottom: 0;
+  left: 0;
+  mix-blend-mode: var(--mode);
+  position: fixed;
+  width: 100%;
+  z-index: 9;
+
+  .footer-socials {
+    bottom: var(--bottom);
+    display: none;
+    left: 0.5rem;
+    left: calc(var(--screen-x) - 0.75rem);
+    margin-top: 0.3125rem;
+    position: fixed;
+
+    a {
+      display: block;
+      font-size: 0;
+      line-height: 1;
+      padding: 0.625rem;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .footer {
+    --bottom: 3rem;
+    .footer-socials {
+      display: block;
+    }
+  }
+}

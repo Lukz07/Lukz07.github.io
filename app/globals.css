@@ -29,9 +29,9 @@ body, html {
 }
 
 .h6, h6 {
-  font-size: .875rem;
+  font-size: .75rem;
   line-height: 130%;
-  letter-spacing: .5rem;
+  letter-spacing: .75rem;
 }
 
 @media(min-width: 768px) and (max-width: 1199px) {

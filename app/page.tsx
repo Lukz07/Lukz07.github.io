@@ -4,6 +4,7 @@ import Header from "@/app/components/Header";
 import About from "@/app/components/Sections/About"
 import {ParallaxProvider} from "react-scroll-parallax";
 import {useEffect} from "react";
+import Footer from "@/app/components/Footer";
 
 const setVh = () => {
   let vh = window.innerHeight * 0.01;
@@ -27,6 +28,7 @@ export default function Home() {
           </div>
         </div>
       </main>
+      <Footer/>
     </ParallaxProvider>
   )
 }
