@@ -17,64 +17,75 @@ const Cursor = () => {
 
     const cursorRotationDuration = 8;
 
-    const handlePointerEnter = (e: Event) => {
+    const handlePointerEnter = function (e: Event) {
       isHovered = true;
+      // const imagen = this.querySelector("img");
+      const img = this.firstElementChild;
+      const { offsetX: x, offsetY: y } = e;
+      const { offsetWidth: width, offsetHeight: height } = this;
+      const move = 25;
 
-      const target = e.currentTarget;
+      let xMove = x / width * (move * 2) - move;
+      let yMove = y / height * (move * 2) - move;
+      img.style.transform = `translate(${xMove}px, ${yMove}px)`;
+
+      if(e.type === 'mouseleave') img.style.transform = '';
+
+      // const target = e.currentTarget;
       // updateCursorText(target);
 
-      gsap.set([cursorTextContainerEl, cursorTextEl], {
-        height: initialCursorHeight,
-        width: initialCursorHeight
-      });
-
-      gsap.fromTo(
-        cursorTextContainerEl,
-        {
-          rotate: 0
-        },
-        {
-          duration: cursorRotationDuration,
-          rotate: 360,
-          ease: "none",
-          repeat: -1
-        }
-      );
-
-      gsap.to(cursorInner, hoverEffectDuration, {
-        scale: 2
-      });
-
-      gsap.fromTo(
-        cursorTextContainerEl,
-        hoverEffectDuration,
-        {
-          scale: 1.2,
-          opacity: 0
-        },
-        {
-          delay: hoverEffectDuration * 0.75,
-          scale: 1,
-          opacity: 1
-        }
-      );
-      gsap.to(cursorOuter, hoverEffectDuration, {
-        scale: 1.2,
-        opacity: 0
-      });
+      // gsap.set([cursorTextContainerEl, cursorTextEl], {
+      //   height: initialCursorHeight,
+      //   width: initialCursorHeight
+      // });
+      //
+      // gsap.fromTo(
+      //   cursorTextContainerEl,
+      //   {
+      //     rotate: 0
+      //   },
+      //   {
+      //     duration: cursorRotationDuration,
+      //     rotate: 360,
+      //     ease: "none",
+      //     repeat: -1
+      //   }
+      // );
+      //
+      // gsap.to(cursorInner, hoverEffectDuration, {
+      //   scale: 2
+      // });
+      //
+      // gsap.fromTo(
+      //   cursorTextContainerEl,
+      //   hoverEffectDuration,
+      //   {
+      //     scale: 1.2,
+      //     opacity: 0,
+      //   },
+      //   {
+      //     delay: hoverEffectDuration * 0.75,
+      //     scale: 1,
+      //     opacity: 1,
+      //   }
+      // );
+      // gsap.to(cursorOuter, hoverEffectDuration, {
+      //   scale: 1.2,
+      //   opacity: 0,
+      // });
     }
 
-    const handlePointerLeave = () => {
-      isHovered = false;
-      gsap.to([cursorInner, cursorOuter], hoverEffectDuration, {
-        scale: 1,
-        opacity: 1
-      });
-    }
+    // const handlePointerLeave = () => {
+    //   isHovered = false;
+    //   gsap.to([cursorInner, cursorOuter], hoverEffectDuration, {
+    //     scale: 1,
+    //     opacity: 1
+    //   });
+    // }
 
     hoverItems.forEach((item) => {
-      item.addEventListener("pointerenter", handlePointerEnter);
-      item.addEventListener("pointerleave", handlePointerLeave);
+      item.addEventListener("mousemove", handlePointerEnter);
+      item.addEventListener("mouseleave", handlePointerEnter);
     });
 
     let mouse = {
@@ -87,7 +98,13 @@ const Cursor = () => {
       mouse.y = e.pageY;
     }
 
-    document.body.addEventListener("pointermove", updateCursorPosition);
+    const editCursor = (e: MouseEvent) => {
+      const { clientX: x, clientY: y } = e;
+      cursorInner.style.left = x + 'px';
+      cursorInner.style.top = y + 'px';
+    }
+
+    document.body.addEventListener("mousemove", editCursor);
 
     const updateCursor = () => {
       gsap.set([cursorInner, cursorTextContainerEl], {
@@ -113,7 +130,7 @@ const Cursor = () => {
       requestAnimationFrame(updateCursor);
     }
 
-    updateCursor();
+    // updateCursor();
   },[])
 
   return(

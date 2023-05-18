@@ -22,8 +22,16 @@
       font-size: 0;
       line-height: 1;
       padding: 0.625rem;
+
+      img {
+        pointer-events: none;
+        transition: transform 0.1s linear;
+      }
     }
 
+    .cursor-hover-item {
+      transition: all 0.3s ease;
+    }
     .cursor-hover-item:hover ~ .cursor {
       transform: translate(-50%, 50%) scale(8);
     }
