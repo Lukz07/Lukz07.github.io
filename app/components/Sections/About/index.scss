@@ -5,6 +5,7 @@
     overflow: hidden;
     position: relative;
     height: 100vh;
+    display: flex;
 
     .hero-bg {
       height: 100%;
@@ -54,13 +55,11 @@
       -webkit-box-align: center;
       display: flex;
       align-items: center;
-      position: relative;
       width: 100%;
       height: calc(var(--vh)*100);
       z-index: 2;
       justify-content: center;
       min-height: 32.5rem;
-
 
       &-inner {
         &-subtitle {
@@ -166,6 +165,40 @@
             }
             62%{
               transform: translate(-22px,5px) skew(21deg);
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
+
+.layer-orange {
+  .about {
+    .hero {
+      .hero-bg {
+        .bottom-gradient {
+          background: linear-gradient(0deg, rgba(235,89,57,1) 63%, rgba(235,89,57,0) 100%);
+        }
+        .top-gradient {
+          background: linear-gradient(180deg, rgba(235,89,57,1) 60%, rgba(235,89,57,0) 100%);
+        }
+      }
+
+      .hero-content {
+        &-inner {
+          &-subtitle {
+            color: var(--primary);
+          }
+
+          .line {
+            strong {
+              color: var(--primary);
+            }
+
+            .char {
+              color: var(--primary);
             }
           }
         }

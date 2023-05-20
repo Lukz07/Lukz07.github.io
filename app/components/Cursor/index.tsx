@@ -1,5 +1,5 @@
 import "./index.scss";
-import {ReactNode, useEffect} from "react";
+import {useEffect} from "react";
 import {gsap} from "gsap";
 
 interface IPointerEvent extends Event{
@@ -10,12 +10,13 @@ interface IPointerEvent extends Event{
 }
 
 const Cursor = () => {
-
   useEffect(() => {
-    const cursorInner: HTMLElement | null = document.querySelector(".cursor--small");
     const hoverItems = document.querySelectorAll(".cursor-hover-item");
+    const hero = document.querySelector(".layer-orange");
 
-    const handlePointerEnter = function (e: Event) {
+    const tl = gsap.timeline({ delay: 1});
+
+    const handleFooterPointerEnter = function (e: Event) {
       const img = this.firstElementChild;
       const { offsetX: x, offsetY: y } = e as MouseEvent;
       const { offsetWidth: width, offsetHeight: height } = this;
@@ -25,23 +26,62 @@ const Cursor = () => {
       let yMove = y / height * (move * 2) - move;
       img.style.transform = `translate(${xMove}px, ${yMove}px)`;
 
-      if(e.type === 'mouseleave') img.style.transform = '';
-    }
+      gsap.to(hero, {
+        "--maskSize1": "5%",
+        duration: 0.5,
+        ease: "back.out(2)"
+      })
+      gsap.to(hero, {
+        "--maskSize2": "7%",
+        duration: 0.5,
+        delay: 0.5,
+        ease: "back.out(2)"
+      });
 
-    const editCursor = (e: MouseEvent) => {
-      const { clientX: x, clientY: y } = e;
-      if(!cursorInner) return;
-      cursorInner.style.left = x + 'px';
-      cursorInner.style.top = y + 'px';
+      if(e.type === 'mouseleave') {
+        img.style.transform = '';
+        gsap.to(hero, {
+          "--maskSize1": "2%",
+          duration: 0.5,
+          ease: "back.out(2)"
+        });
+        gsap.to(hero, {
+          "--maskSize2": "4%",
+          duration: 0.5,
+          delay: 0.5,
+          ease: "back.out(2)"
+        });
+      }
     };
 
-    console.log(hoverItems)
     hoverItems.forEach((item) => {
-      item.addEventListener("mousemove",  handlePointerEnter);
-      item.addEventListener("mouseleave", handlePointerEnter);
+      item.addEventListener("mousemove",  handleFooterPointerEnter);
+      item.addEventListener("mouseleave", handleFooterPointerEnter);
     });
 
-    document.body.addEventListener("mousemove", editCursor);
+    tl.to(hero, {
+      "--maskSize1": "2%",
+      duration: 0.5,
+      ease: "back.out(2)"
+    }).to(hero, {
+      "--maskSize2": "4%",
+      duration: 0.5,
+      delay: 0.5,
+      ease: "back.out(2)"
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      const { clientX, clientY } = e
+      const x = Math.round((clientX / window.innerWidth) * 100);
+      const y = Math.round((clientY / window.innerHeight) * 100);
+
+      gsap.to(hero, {
+        "--x": `${x}%`,
+        "--y": `${y}%`,
+        duration: 0.3,
+        ease: "sine.out",
+      });
+    });
   },[])
 
   return(

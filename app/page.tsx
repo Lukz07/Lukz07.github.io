@@ -15,9 +15,7 @@ const setVh = () => {
 export default function Home() {
   useEffect(() => {
     setVh();
-    window.addEventListener('resize', () => {
-      setVh()
-    })
+    window.addEventListener('resize', () => setVh())
   }, [])
   return (
     <ParallaxProvider>
@@ -28,9 +26,14 @@ export default function Home() {
             <About/>
           </div>
         </div>
+        <div className="layer layer-orange">
+          <div className="layer-container">
+            <About className="orange"/>
+          </div>
+        </div>
       </main>
       <Footer/>
-      <Cursor/>
+      <Cursor />
     </ParallaxProvider>
   )
 }

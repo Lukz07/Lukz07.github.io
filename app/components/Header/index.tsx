@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-logo">
-        <a className="link-logo">
+        <a className="link-logo cursor-hover-item">
           <Image src="/logo.svg" alt="page logo" width={64} height={64} priority/>
         </a>
       </div>
