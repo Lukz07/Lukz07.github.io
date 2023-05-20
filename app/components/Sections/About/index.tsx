@@ -1,6 +1,6 @@
 "use client"
 import "./index.scss";
-import {ParallaxBanner} from "react-scroll-parallax";
+import {ParallaxBanner, Parallax} from "react-scroll-parallax";
 import { gsap } from "gsap";
 import Image from "next/image";
 import {useEffect} from "react";
@@ -63,7 +63,7 @@ const About = ({className}: AboutProps) => {
           {
             speed: -15,
             scale: [1, 1, 'easeOutCubic'],
-            translateY: [0,50],
+            translateY: [0,70],
             children: (
               <div className="hero-bg full aspect-auto">
                 <div className="banner-container">
@@ -72,7 +72,8 @@ const About = ({className}: AboutProps) => {
                     alt="banner"
                     fill={true}
                     className="banner"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 33v"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    style={{ }}
                   />
                 </div>
                 <div className="top-gradient"></div>
@@ -81,7 +82,7 @@ const About = ({className}: AboutProps) => {
             )
           },
           {
-            speed: -200,
+            speed: -15,
             children: (
               <div className="hero-content">
                   <div className="flex flex-row justify-center">
@@ -151,9 +152,11 @@ const About = ({className}: AboutProps) => {
           }
         ]} className="hero">
       </ParallaxBanner>
-      <div className="center full">
-        <h1 className="headline gray">Goodnight.</h1>
-      </div>
+      <Parallax className="hero-content">
+        <div className="flex flex-row justify-center">
+          <h1 className="headline gray">Bye bye :)</h1>
+        </div>
+      </Parallax>
     </div>
   )
 };
