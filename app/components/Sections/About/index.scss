@@ -229,7 +229,7 @@
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1399px){
+@media (min-width: 1200px) and (max-width: 1999px){
   .h1, h1 {
     font-size: 8.75rem;
   }
@@ -242,6 +242,7 @@
         .banner-container {
           .banner {
             width: 100%;
+            object-position: bottom 240px right 30%;
           }
         }
 
@@ -264,8 +265,27 @@
   }
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 2000px) {
   .h1, h1 {
     font-size: 8rem;
   }
+  .about {
+    .hero {
+      .hero-bg {
+        .banner-container {
+          .banner {
+            width: 100%;
+            object-position: bottom -100px right 0px;
+          }
+        }
+
+        .bottom-gradient {
+          height: 55%;
+          background: linear-gradient(0deg, rgba(13,13,13,1) 70%, rgba(13,13,13,0) 100%);
+        }
+      }
+
+    }
+  }
+
 }

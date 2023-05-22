@@ -14,8 +14,28 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const { NEXT_PUBLIC_GA_ID } = process.env;
   return (
     <html lang="en">
+      {/* Global Site Tag (gtag.js) - Google Analytics */}
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${NEXT_PUBLIC_GA_ID}`}
+      />
+      <Script
+        id="gaTag"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-FBW7T614ZG', {
+                page_path: window.location.pathname,
+              });
+            `,
+        }}
+      />
       <body className={inter.className}>
           {children}
       </body>
