@@ -1,0 +1,163 @@
+.about {
+  .about-me {
+    height: 100vh;
+    margin-bottom: 12.5rem;
+    margin-top: 12.5rem;
+
+    .about-me-container {
+      width: 100%;
+      .about-content {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+
+        .about-content-label {
+          font-size: .875rem;
+          line-height: 180%;
+          letter-spacing: .5em;
+          margin-bottom: 1.875rem;
+          font-style: normal;
+          font-weight: 500;
+        }
+
+        .about-content-desc {
+          max-width: 30rem;
+          line-height: 82%;
+          position: relative;
+
+          .scroll-paragraph-mask {
+            .line {
+              padding-bottom: 0.2em;
+              line-height: 82%;
+              background: linear-gradient(
+                to right,
+                rgb(255, 255, 255) 50%,
+                rgb(37, 37, 37) 50%
+              );
+              background-size: 200% 100%;
+              background-position-x: 100%;
+              color: transparent;
+              -webkit-background-clip: text;
+
+              strong {
+                background: linear-gradient(
+                to right,
+                white 50%,
+                var(--third) 50%
+                );
+                color: transparent;
+                -webkit-background-clip: text;
+                background-size: 200% 100% ;
+                background-position-x: 100% ;
+                font-weight: 700;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#fontSizeTester {
+  position: absolute;
+  //visibility: hidden;
+  height: auto;
+  width: auto;
+  white-space: nowrap;
+}
+
+.layer-orange {
+  .about {
+    .about-me {
+      height: 100vh;
+      .about-me-container {
+        .about-content {
+          .about-content-desc {
+            .scroll-paragraph-mask {
+              .line {
+                line-height: 82%;
+                strong {
+                  color: var(--primary);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+@media (min-width: 768px) and (max-width: 1023px){
+  .h2, h2 {
+    font-size: 3.5rem;
+  }
+  .about {
+    .about-me {
+      margin-bottom: 28.76vh;
+      margin-top: 28.76vh;
+
+      .about-me-container {
+        margin-left: 8.33%;
+        width: 83.3%;
+
+        .about-content {
+          .about-content-desc {
+            max-width: unset;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .about {
+    .about-me {
+      margin-bottom: 28.76vh;
+      margin-top: 28.76vh;
+      .about-me-container {
+        width: 83.33%;
+        .about-content {
+          .about-content-desc {
+            max-width: unset;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .h2, h2 {
+    font-size: 4.5rem;
+  }
+
+  .about {
+    .about-me {
+      margin-bottom: 28.76vh;
+      margin-top: 28.76vh;
+      .about-me-container {
+        margin-left: 16.66%;
+        width: 66.66%;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .h2, h2 {
+    font-size: 5.5rem;
+  }
+
+  .about {
+    .about-me {
+      .about-me-container {
+        margin-left: 16.66%;
+        width: 66.66%;
+      }
+    }
+  }
+}

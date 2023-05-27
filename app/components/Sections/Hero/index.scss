@@ -123,11 +123,11 @@
             display: inline-block;
             animation: 2s anim-lineUp;
 
-          .with-glitch {
-            animation-delay: 4s;
-            animation: glitch 1s linear infinite;
+            .with-glitch {
+              animation-delay: 4s;
+              animation: glitch 1s linear infinite;
+            }
           }
-        }
 
           div:before,
           div:after{
@@ -179,26 +179,112 @@
 }
 
 .layer-orange {
-  .about {
+  #about {
+    .hero {
+      .hero-bg {
+        .bottom-gradient {
+          background: linear-gradient(0deg, rgba(235,89,57,1) 63%, rgba(235,89,57,0) 100%);
+        }
+        .top-gradient {
+          background: linear-gradient(180deg, rgba(235,89,57,1) 60%, rgba(235,89,57,0) 100%);
+        }
+      }
 
+      .hero-content {
+        &-inner {
+          &-subtitle {
+            color: var(--primary);
+          }
+
+          .line {
+            strong {
+              color: var(--primary);
+            }
+
+            .char {
+              color: var(--primary);
+            }
+          }
+        }
+      }
+    }
   }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-  #about {
+  .h1, h1 {
+    font-size: 6.875rem;
+  }
 
+  #about {
+    .hero {
+      .hero-bg {
+        .banner-container {
+          .banner {
+            object-position: bottom 200px right 30%;
+          }
+        }
+      }
+    }
   }
 }
 
 @media (min-width: 1200px) and (max-width: 1999px){
+  .h1, h1 {
+    font-size: 8.75rem;
+  }
+  .h6, h6 {
+    font-size: 1rem;
+  }
   #about {
+    .hero {
+      .hero-bg {
+        .banner-container {
+          .banner {
+            width: 100%;
+            object-position: bottom 240px right 30%;
+          }
+        }
 
+        .bottom-gradient {
+          height: 55%;
+          background: linear-gradient(0deg, rgba(13,13,13,1) 70%, rgba(13,13,13,0) 100%);
+        }
+      }
+
+      .hero-content {
+        padding-bottom: 18.65vh;
+        padding-top: 15.77vh;
+        &-inner {
+          &-subtitle {
+            margin-bottom: 1.875rem;
+          }
+        }
+      }
+    }
   }
 }
 
 @media (min-width: 2000px) {
-  #about {
-
+  .h1, h1 {
+    font-size: 8rem;
   }
+  #about {
+    .hero {
+      .hero-bg {
+        .banner-container {
+          .banner {
+            width: 100%;
+            object-position: bottom -100px right 0px;
+          }
+        }
 
+        .bottom-gradient {
+          height: 55%;
+          background: linear-gradient(0deg, rgba(13,13,13,1) 70%, rgba(13,13,13,0) 100%);
+        }
+      }
+
+    }
+  }
 }

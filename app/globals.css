@@ -28,10 +28,40 @@ body, html {
   text-transform: uppercase;
 }
 
+.h2, h2 {
+  font-size: 3.9rem;
+  letter-spacing: -.04em;
+  line-height: 100%;
+  font-weight: 500;
+}
+
 .h6, h6 {
   font-size: .75rem;
   line-height: 130%;
   letter-spacing: .75rem;
+}
+
+.row {
+  --bs-gutter-x: 1.25rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(var(--bs-gutter-x)*-.5);
+  margin-right: calc(var(--bs-gutter-x)*-.5);
+  margin-top: calc(var(--bs-gutter-y)*-1);
+}
+
+.row>* {
+  margin-top: calc(var(--bs-gutter-y));
+  max-width: 100%;
+  margin-left: calc(var(--bs-gutter-x)*-.5);
+  margin-right: calc(var(--bs-gutter-x)*-.5);
+}
+
+@media (max-width: 767px) {
+  .row {
+    --bs-gutter-x: 0.625rem;
+  }
 }
 
 @media(min-width: 768px) and (max-width: 1199px) {
@@ -49,11 +79,5 @@ body, html {
     font-size: .9259vw;
   }
 }
-
-/*@media (prefers-color-scheme: no-preference) {*/
-/*  :root {*/
-
-/*  }*/
-/*}*/
 
 

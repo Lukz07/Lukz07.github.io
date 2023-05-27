@@ -2,13 +2,6 @@ import "./index.scss";
 import {useEffect} from "react";
 import {gsap} from "gsap";
 
-interface IPointerEvent extends Event{
-  offsetX: number,
-  offsetY: number,
-  offsetWidth: number,
-  offsetHeight: number
-}
-
 const Cursor = () => {
   useEffect(() => {
     const hoverItems = document.querySelectorAll(".cursor-hover-item");
@@ -70,17 +63,43 @@ const Cursor = () => {
       ease: "back.out(2)"
     });
 
-    window.addEventListener("mousemove", (e) => {
-      const { clientX, clientY } = e
-      const x = Math.round((clientX / window.innerWidth) * 100);
-      const y = Math.round((clientY / window.innerHeight) * 100);
+    let clientScrollY = 0;
+    let totalClientScrollY = 0;
+    let positionX = 0;
+    let windowInnerHeight = 0;
+
+    const updatePosition = () => {
+      // console.log(window.innerHeight);
+
+      const x = Math.round((positionX / window.innerWidth) * 100);
+      // const y = Math.round((totalClientScrollY / windowInnerHeight) * 100);
+      const y = totalClientScrollY;
 
       gsap.to(hero, {
         "--x": `${x}%`,
-        "--y": `${y}%`,
+        "--y": `${y}px`,
         duration: 0.3,
         ease: "sine.out",
       });
+    }
+
+    const updateOnScrollY = () => {
+      totalClientScrollY = window.scrollY + clientScrollY;
+      windowInnerHeight = window.innerHeight;
+      updatePosition();
+    }
+
+    document.addEventListener('scroll', (e) => {
+      updateOnScrollY();
+    });
+
+    document.addEventListener("mousemove", (e) => {
+      const { clientX, clientY } = e
+      clientScrollY = clientY;
+      positionX = clientX;
+      updateOnScrollY();
+
+
     });
   },[])
 
