@@ -1,0 +1,82 @@
+.btn-clipPath {
+  --duration: 10s;
+  background: none;
+  border: none;
+  bottom: 2.1875rem;
+  display: none;
+  left: calc(50% - var(--size-btn)/2);
+  padding: 0!important;
+  position: fixed;
+  z-index: 4;
+
+  &-inner {
+    display: block;
+    position: relative;
+
+    &-image {
+      display: block;
+
+      &-ring {
+        animation: loopRing var(--duration) infinite forwards linear;
+        height: var(--size-btn);
+        width: var(--size-btn);
+      }
+
+      &-touch {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        align-items: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@-webkit-keyframes loopRing {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg)
+  }
+
+  50% {
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn)
+  }
+
+  to {
+    -webkit-transform: rotate(2turn);
+    transform: rotate(2turn)
+  }
+}
+
+@keyframes loopRing {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg)
+  }
+
+  50% {
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn)
+  }
+
+  to {
+    -webkit-transform: rotate(2turn);
+    transform: rotate(2turn)
+  }
+}
+
+.is-touch .btn-clipPath {
+  display: block;
+}
+

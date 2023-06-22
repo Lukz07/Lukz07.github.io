@@ -1,0 +1,220 @@
+.about-i-do {
+  padding-bottom: 12.5rem;
+  position: relative;
+  height: 100vh;
+
+  .h1, h1 {
+    font-size: 4.3rem;
+    letter-spacing: -.06em;
+    line-height: 84%;
+    font-weight: 600;
+  }
+
+  .text-dark {
+    color: #0d0d0d!important;
+  }
+
+  .container-content {
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+  }
+
+  .about-content-label {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    font-style: normal;
+    font-weight: 200;
+  }
+
+  .body-text {
+    font-size: .75rem;
+    line-height: 180%;
+    letter-spacing: .5em;
+    margin-bottom: 1.875rem;
+  }
+
+  .heading-mask {
+    border-top: 1px solid #b8ac9926;
+    position: relative;
+
+    &-el {
+      align-items: center;
+      display: flex;
+      height: 4.5rem;
+      -webkit-box-align: center;
+
+      &-masking {
+        background: var(--third);
+        clip-path: inset(50% 0 50% 0);
+        position: relative;
+        transition: clip-path .4s cubic-bezier(.165,.84,.44,1), -webkit-clip-path .4s cubic-bezier(.165,.84,.44,1);
+        z-index: 2;
+      }
+
+      .simple-masking {
+        position: relative;
+
+        &-el {
+          display: inline-block;
+        }
+      }
+
+      .simple-masking .is-masking,
+      .simple-masking .is-deep {
+        display: inline-block;
+        padding-right: 10px;
+      }
+
+      .simple-masking .is-masking {
+        --size: 100%;
+        clip-path: inset(0 var(--size) 0 0);
+        position: relative;
+        z-index: 7;
+      }
+
+      .simple-masking .is-deep {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: .2;
+        z-index: 6;
+      }
+
+      &-deep {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  .heading-mask:last-child {
+    border-bottom: 1px solid #b8ac9926;
+  }
+
+  .heading-mask.is-hover {
+    .heading-mask-el-masking {
+      -webkit-clip-path: inset(0);
+      clip-path: inset(0);
+      -webkit-transition: -webkit-clip-path .6s cubic-bezier(.165,.84,.44,1);
+      transition: -webkit-clip-path .6s cubic-bezier(.165,.84,.44,1);
+      transition: clip-path .6s cubic-bezier(.165,.84,.44,1);
+      transition: clip-path .6s cubic-bezier(.165,.84,.44,1),-webkit-clip-path .6s cubic-bezier(.165,.84,.44,1);
+
+      .desc-parent {
+        display: block;
+      }
+
+      div div:first-child {
+        display: none;
+      }
+    }
+
+    .heading-mask-el-deep {
+      .is-masking {
+        visibility: hidden;
+      }
+
+      div div:first-child {
+        display: none;
+      }
+    }
+  }
+}
+
+.is-orange {
+  .layer-dark {
+    .heading-mask {
+      .heading-mask-el-deep {
+        div div:first-child {
+          display: none;
+        }
+
+        div div:last-child {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .layer-orange {
+    .about-content-label {
+      color: var(--primary);
+    }
+    .heading-mask {
+      .heading-mask-el-deep {
+        div {
+          div:first-child {
+            display: none;
+          }
+          div:last-child {
+            display: block;
+            color: var(--primary);
+            font-weight: 300;
+            font-size: .9rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.layer-orange {
+  .heading-mask {
+    border-top-color: var(--primary);
+
+    .heading-mask-el-deep + div div:first-child,
+    .heading-mask-el-masking + div + div:first-child,
+    .heading-mask-el-deep .h1.is-deep {
+      display: none;
+    }
+  }
+
+  .heading-mask:last-child {
+    border-bottom-color: var(--primary);
+  }
+}
+
+@media (min-width: 768px) {
+  .about-i-do {
+    margin-left: 8.33%;
+    padding-left: 1.25rem;
+    padding-bottom: 0;
+    height: 85vh;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-i-do {
+    margin-left: 10%;
+
+    .heading-mask {
+      .h1 {
+        font-size: 5.3rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 1199px) {
+  .about-i-do {
+    margin-left: 10%;
+    height: 100vh;
+    margin-top: 10vh;
+    padding-bottom: 1.25rem;
+
+    .heading-mask {
+      .h1 {
+        font-size: 9rem;
+      }
+
+      .desc-parent {
+        font-size: 1.5rem;
+      }
+      .heading-mask-el {
+        height: 8.5rem;
+      }
+    }
+  }
+}

@@ -1,7 +1,8 @@
 "use client"
 import Image from "next/image";
 import "./index.scss";
-import React from "react";
+import React, {useEffect} from "react";
+import Link from "next/link";
 
 const Header = () => {
   const onClick = (e: React.MouseEvent) => {
@@ -25,29 +26,29 @@ const Header = () => {
       </div>
       <div className="header-menu">
         <ul className="header-menu-list">
-          <li className="header-menu-item is-active">
-            <a href="#about" className="desc uppercase" onClick={(e) => onClick(e)}>
+          <li className="header-menu-item">
+            <Link href="/#about" className="desc uppercase" onClick={(e) => onClick(e)}>
             <span className="header-menu-item-inner">
               <span className="header-menu-item-link header-menu-item-link-deep ">About</span>
               <span className="header-menu-item-link header-menu-item-link-active ">About</span>
             </span>
-            </a>
+            </Link>
           </li>
           <li className="header-menu-item">
-            <a href="#work" className="desc uppercase" onClick={(e) => onClick(e)}>
+            <Link href="#work" className="desc uppercase" onClick={(e) => onClick(e)}>
             <span className="header-menu-item-inner">
               <span className="header-menu-item-link header-menu-item-link-deep ">Work</span>
               <span className="header-menu-item-link header-menu-item-link-active ">Work</span>
             </span>
-            </a>
+            </Link>
           </li>
           <li className="header-menu-item">
-            <a href="#contact" className="desc uppercase" onClick={(e) => onClick(e)}>
+            <Link href="#contact" className="desc uppercase" onClick={(e) => onClick(e)}>
             <span className="header-menu-item-inner">
               <span className="header-menu-item-link header-menu-item-link-deep ">Contact</span>
               <span className="header-menu-item-link header-menu-item-link-active ">Contact</span>
             </span>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

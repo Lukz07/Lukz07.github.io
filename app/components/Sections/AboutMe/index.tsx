@@ -1,8 +1,9 @@
 import "./index.scss";
-import {getVw, setDarkLayerHeight, SplitText} from "@/app/utils";
+import {getOrangeLayerContainer, getVw, setDarkLayerHeight, SplitText} from "@/app/utils";
 import {Fragment, useEffect, useState} from "react";
 import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
+import AboutIDo from "@/app/components/Sections/AboutIDo";
 
 interface AboutMeProps {
   colorMode: string
@@ -10,58 +11,63 @@ interface AboutMeProps {
 
 const AboutMe = ({colorMode}: AboutMeProps) => {
   const [vw, setVw] = useState(getVw());
+  const [hydrated, setHydrated] = useState(false);
   gsap.registerPlugin(ScrollTrigger);
 
+  //Pointer animation when hover over about text content
+  const handleTextPointerEnter = function (e: Event) {
+    console.log("handleTextPointerEnter")
+    gsap.to(getOrangeLayerContainer(), {
+      "--maskSize1": "20%",
+      duration: 0.5,
+      ease: "back.out(2)"
+    })
+    gsap.to(getOrangeLayerContainer(), {
+      "--maskSize2": "28%",
+      duration: 0.5,
+      delay: 0.5,
+      ease: "back.out(2)"
+    });
+
+    if(e.type === 'mouseleave') {
+      gsap.to(getOrangeLayerContainer(), {
+        "--maskSize1": "0.5%",
+        duration: 0.5,
+        ease: "back.out(2)"
+      });
+      gsap.to(getOrangeLayerContainer(), {
+        "--maskSize2": "2%",
+        duration: 0.5,
+        delay: 0.5,
+        ease: "back.out(2)"
+      });
+    }
+  };
+
   useEffect(() => {
+    setHydrated(true);
+
     window.addEventListener('resize', () => {
       setVw(getVw())
       setDarkLayerHeight();
     });
 
-    //Pointer animation when hover over about text content
     const observer = new MutationObserver((mutations, obs) => {
-      const parallaxContainer = document.querySelector('.layer-orange .about .about-content-desc');
-      if (parallaxContainer) {
-        parallaxContainer.addEventListener('mouseenter', handleTextPointerEnter);
-        parallaxContainer.addEventListener('mouseleave', handleTextPointerEnter);
+      const containerSelector = ".layer-dark .about .about-me .about-me-container .about-content .about-content-desc";
+      const container = document.querySelector(`${containerSelector}`);
+      if (container) {
+        container.addEventListener('mouseenter', handleTextPointerEnter);
+        container.addEventListener('mouseleave', handleTextPointerEnter);
       }
     });
-
     observer.observe(document, {
       childList: true,
       subtree: true
     });
 
-    const hero = document.querySelector(".layer-orange");
+  },[]);
 
-    const handleTextPointerEnter = function (e: Event) {
-      gsap.to(hero, {
-        "--maskSize1": "20%",
-        duration: 0.5,
-        ease: "back.out(2)"
-      })
-      gsap.to(hero, {
-        "--maskSize2": "28%",
-        duration: 0.5,
-        delay: 0.5,
-        ease: "back.out(2)"
-      });
-
-      if(e.type === 'mouseleave') {
-        gsap.to(hero, {
-          "--maskSize1": "3%",
-          duration: 0.5,
-          ease: "back.out(2)"
-        });
-        gsap.to(hero, {
-          "--maskSize2": "5%",
-          duration: 0.5,
-          delay: 0.5,
-          ease: "back.out(2)"
-        });
-      }
-    };
-
+  useEffect(() => {
     //Scroll trigger text reveal
     const split = new SplitText('.layer-dark .about .about-me .about-me-container .about-content-desc .line');
     split.lines.forEach((target) => {
@@ -76,8 +82,7 @@ const AboutMe = ({colorMode}: AboutMeProps) => {
         }
       });
     })
-
-  },[])
+  },[hydrated])
   const RenderDesc  = () => {
     if (vw < 7.68){
       if (!colorMode){
@@ -125,21 +130,21 @@ const AboutMe = ({colorMode}: AboutMeProps) => {
   }
   return (
     <div className="about">
-      <div className="flex row about-me">
-        <div className="flex flex-col flex-wrap lg:columns-4xl sm:columns-2xl columns-12 about-me-container">
+      <div className="flex about-me">
+        <div className="flex flex-col flex-wrap about-me-container">
           <div className="about-content container-content">
             <p className="about-content-label body-text uppercase">
               About me
             </p>
             <div className="about-content-desc h2 scroll-paragraph-parent">
               <div className="scroll-paragraph-mask">
-                <RenderDesc/>
+                {hydrated && <RenderDesc/>}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="about-ido"></div>
+      <AboutIDo/>
     </div>
   );
 };

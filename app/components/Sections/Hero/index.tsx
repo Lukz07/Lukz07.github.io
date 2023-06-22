@@ -4,6 +4,7 @@ import {ParallaxBanner} from "react-scroll-parallax";
 import { gsap } from "gsap";
 import Image from "next/image";
 import {useEffect} from "react";
+import {getOrangeLayerContainer} from "@/app/utils";
 
 interface HeroProps {
   colorMode?: string
@@ -12,7 +13,7 @@ interface HeroProps {
 const Hero = ({colorMode}: HeroProps) => {
   useEffect(() => {
     const observer = new MutationObserver((mutations, obs) => {
-      const parallaxContainer = document.querySelector('.layer-orange .hero-content .hero-content-inner');
+      const parallaxContainer = document.querySelector('.layer-dark .hero-content .hero-content-inner');
       if (parallaxContainer) {
         parallaxContainer.addEventListener('mouseenter', handleTextPointerEnter);
         parallaxContainer.addEventListener('mouseleave', handleTextPointerEnter);
@@ -24,14 +25,13 @@ const Hero = ({colorMode}: HeroProps) => {
       subtree: true
     });
 
-    const hero = document.querySelector(".layer-orange");
     const handleTextPointerEnter = function (e: Event) {
-      gsap.to(hero, {
+      gsap.to(getOrangeLayerContainer(), {
         "--maskSize1": "20%",
         duration: 0.5,
         ease: "back.out(2)"
       })
-      gsap.to(hero, {
+      gsap.to(getOrangeLayerContainer(), {
         "--maskSize2": "28%",
         duration: 0.5,
         delay: 0.5,
@@ -39,13 +39,13 @@ const Hero = ({colorMode}: HeroProps) => {
       });
 
       if(e.type === 'mouseleave') {
-        gsap.to(hero, {
-          "--maskSize1": "3%",
+        gsap.to(getOrangeLayerContainer(), {
+          "--maskSize1": "0.5%",
           duration: 0.5,
           ease: "back.out(2)"
         });
-        gsap.to(hero, {
-          "--maskSize2": "5%",
+        gsap.to(getOrangeLayerContainer(), {
+          "--maskSize2": "1%",
           duration: 0.5,
           delay: 0.5,
           ease: "back.out(2)"
@@ -59,22 +59,21 @@ const Hero = ({colorMode}: HeroProps) => {
       id="parallaxBanner"
       layers={[
         {
-          speed: -15,
+          speed: 20,
           scale: [1, 1, 'easeOutCubic'],
           translateY: [0,70],
           children: (
             <div className="hero-bg full aspect-auto">
               <div className="banner-container">
-                <Image
-                  src="/profile-pic-azul.png"
-                  alt="banner"
-                  fill={true}
-                  className="banner"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
+                {/*<Image*/}
+                {/*  id="hero-banner"*/}
+                {/*  src="/profile-pic-azul.png"*/}
+                {/*  alt="banner"*/}
+                {/*  fill={true}*/}
+                {/*  className="banner"*/}
+                {/*  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"*/}
+                {/*/>*/}
               </div>
-              {/*<div className="top-gradient"></div>*/}
-              {/*<div className="bottom-gradient"></div>*/}
             </div>
           )
         },

@@ -69,10 +69,7 @@ const Cursor = () => {
     let windowInnerHeight = 0;
 
     const updatePosition = () => {
-      // console.log(window.innerHeight);
-
       const x = Math.round((positionX / window.innerWidth) * 100);
-      // const y = Math.round((totalClientScrollY / windowInnerHeight) * 100);
       const y = totalClientScrollY;
 
       gsap.to(hero, {
@@ -98,8 +95,6 @@ const Cursor = () => {
       clientScrollY = clientY;
       positionX = clientX;
       updateOnScrollY();
-
-
     });
   },[])
 

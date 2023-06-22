@@ -3,9 +3,9 @@
   height: 100%;
 
   &-container {
-    //overflow: hidden;
     padding-left: 0;
     padding-right: 0;
+    overflow-x: hidden;
   }
 }
 
@@ -25,4 +25,38 @@
   background: var(--third);
   mask-image: var(--mask);
   --webkit-mask-image: var(--mask);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .frame-mobile {
+    display: block;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    pointer-events: none;
+
+    &:before {
+      background: linear-gradient(1turn,hsla(0,0%,5%,0),#0c0c0c 92.91%);
+      height: 12.5rem;
+      top: 0;
+    }
+
+    &:after {
+      background: linear-gradient(0deg,#0c0c0c 31.25%,hsla(0,0%,5%,0) 92.91%);
+      bottom: 0;
+      height: 15.625rem;
+    }
+  }
+
+  .frame-mobile:after, .frame-mobile:before {
+    content: "";
+    display: block;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
 }
